@@ -5,15 +5,14 @@ function encrypt() {
   let encryptedMessage = "";
 
   for (let i = 0; i < message.length; i++) {
-    // Convert characters to ASCII codes
-    const keyChar = key.charCodeAt(i % key.length);
-    const messageChar = message.charCodeAt(i);
+    // Get the character code of the current character in the message
+    const charCode = message.charCodeAt(i);
 
-    // Apply XOR operation between message character and key character
-    const encryptedChar = messageChar ^ keyChar;
+    // Encrypt the character based on the key
+    const encryptedCharCode = charCode + parseInt(key);
 
-    // Convert back to character and append to encrypted message
-    encryptedMessage += String.fromCharCode(encryptedChar);
+    // Append the encrypted character to the result
+    encryptedMessage += String.fromCharCode(encryptedCharCode);
   }
 
   // Display the encrypted message
@@ -24,20 +23,20 @@ function encrypt() {
 function decrypt() {
   const key = document.querySelector("#key").value;
   const encryptedMessage = document.querySelector("#message").value;
-  let message = "";
+  let decryptedMessage = "";
 
   for (let i = 0; i < encryptedMessage.length; i++) {
-    // Convert characters to ASCII codes
-    const keyChar = key.charCodeAt(i % key.length);
-    const encryptedChar = encryptedMessage.charCodeAt(i);
+    // Get the character code of the current character in the encrypted message
+    const encryptedCharCode = encryptedMessage.charCodeAt(i);
 
-    // Apply XOR operation between encrypted character and key character
-    const decryptedChar = encryptedChar ^ keyChar;
+    // Decrypt the character based on the key
+    const decryptedCharCode = encryptedCharCode - parseInt(key);
 
-    // Convert back to character and append to decrypted message
-    message += String.fromCharCode(decryptedChar);
+    // Append the decrypted character to the result
+    decryptedMessage += String.fromCharCode(decryptedCharCode);
   }
 
   // Display the decrypted message
-  document.querySelector("#result").value = message;
+  document.querySelector("#result").value = decryptedMessage;
 }
+
