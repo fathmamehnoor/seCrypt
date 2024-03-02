@@ -1,27 +1,21 @@
+// Encryption function
 function encrypt() {
   const key = document.querySelector("#key").value;
   const message = document.querySelector("#message").value;
-  let encryptedMessage = "";
 
-  for (let i = 0; i < message.length; i++) {
-    const keyChar = key.charCodeAt(i % key.length);
-    const messageChar = message.charCodeAt(i);
-    encryptedMessage += String.fromCharCode((messageChar + keyChar) % 127);
-  }
+  // Encrypt the message using AES encryption with the provided key
+  const encryptedMessage = CryptoJS.AES.encrypt(message, key).toString();
 
   document.querySelector("#result").value = encryptedMessage;
 }
 
+// Decryption function
 function decrypt() {
   const key = document.querySelector("#key").value;
   const encryptedMessage = document.querySelector("#message").value;
-  let message = "";
 
-  for (let i = 0; i < encryptedMessage.length; i++) {
-    const keyChar = key.charCodeAt(i % key.length);
-    const encryptedChar = encryptedMessage.charCodeAt(i);
-    message += String.fromCharCode((encryptedChar - keyChar + 127) % 127);
-  }
+  // Decrypt the encrypted message using the provided key
+  const decryptedMessage = CryptoJS.AES.decrypt(encryptedMessage, key).toString(CryptoJS.enc.Utf8);
 
-  document.querySelector("#result").value = message;
+  document.querySelector("#result").value = decryptedMessage;
 }
