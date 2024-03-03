@@ -22,6 +22,6 @@ This is a simple web-based encryption/decryption tool that allows you to encrypt
 ## Contributors
 
 1. Fathma Mehnoor (https://github.com/fathmamehnoor)
-2. Harsha Padma R ()
-3. Anjali K 
-4. Rohinikanth S
+2. Harsha Padma R (https://github.com/padmaharsha)
+3. Anjali K (https://github.com/anjalikallingal)
+4. Rohinikanth S (https://github.com/rohinikanth)
