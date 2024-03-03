@@ -69,3 +69,12 @@ function rc4_encrypt(message, key) {
 function rc4_decrypt(encryptedMessage, key) {
   return CryptoJS.RC4.decrypt(encryptedMessage, key).toString(CryptoJS.enc.Utf8);
 }
+
+function downloadResult() {
+  var resultContent = document.getElementById("result").value;
+  var blob = new Blob([resultContent], { type: "text/plain" });
+  var anchor = document.createElement("a");
+  anchor.download = "result.txt";
+  anchor.href = window.URL.createObjectURL(blob);
+  anchor.click();
+}
